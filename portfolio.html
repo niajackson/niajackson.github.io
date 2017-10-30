@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
-        <title> Nia's Corner </title>
-        <style>
+        <title>Nia's Corner</title>
+        <style type="text/css">
             body {
                 background: rgb(125, 198, 205);
                 color: rgb(45, 45, 45);
@@ -13,7 +13,10 @@
                 font-size: 1.5em;
                 font-weight: bold;
             }
-            [id=all-contents] {
+            h1 {
+                margin: 10px;
+            }
+            #all-contents {
                 max-width: 800px;
                 margin: auto;
             }
@@ -22,7 +25,6 @@
             nav {
                 background: rgb(239, 80, 41);
                 margin: 0 auto;
-                margin-bottom: 20px;
                 display: flex;
                 padding: 10px;
             }
@@ -31,10 +33,6 @@
                 align-items: center;
                 color: rgb(255, 255, 255);
                 flex: 1;
-                 div {
-                    border: 2px solid;
-                    border-radius: 25px;
-                    }
             }
             nav ul {
                 list-style-image: none;
@@ -53,19 +51,31 @@
                 background: rgb(245, 238, 219);
                 display: flex;
             }
-            [class=sidebar] {
-                margin-right: 25px;
-                padding: 10px;
-            }
-            [class=sidebar] img {
-                width: 200px;
-            }
-            [class=content] {
+            .content {
                 flex: 1;
                 padding: 15px;
             }
-            [class=interests] header {
-                font-size: 1.25em;
+
+            /* portfolio styles */
+            #portfolio {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+            #portfolio li {
+                background: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+
+            #portfolio li:hover {
+                background: #eee;
+            } 
+
+            #portfolio a {
+                text-decoration: none;
+                color: #454545;
             }
         </style>
     </head>
@@ -75,31 +85,22 @@
             <nav>
                 <header>Nia's Corner</header>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li><a href="portfolio.html">Portfolio</a>
+                    </li>
                 </ul>
             </nav>
-            
+          
             <main>
-                <div class="sidebar">
-                    
-                    <img src="https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12963798_10207749435872119_1383128904357316342_n.jpg?oh=7ccef6fd0f04af69fd9b05730527461c&oe=5A7DF1DE">
-                </div>
-                
                 <div class="content">
-                    <header> Nia Jackson </header>
-                    <p> Student at Operation Spark </p>
-                    
-                    <section class="interests"
-                    <header>Interests</header>
-                    <ul>
-                        <li> Star Trek</li>
-                        <li> Music Curation</li>
-                        <li> Cinematography</li>
+                    <h1>Portfolio</h1>
+                    <ul id="portfolio">
                     </ul>
-                    </section>
                 </div>
             </main>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/projects.json').then(function(data) { data.projects.forEach(function(project){ $('#portfolio').append('<li><a href="projects/' + project.name + '/">' + project.title + ' : ' + project.description + '</a></li>'); }); }); });</script>
     </body>
 </html>
